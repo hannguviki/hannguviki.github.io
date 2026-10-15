@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- ====== TIÊU ĐỀ & MÔ TẢ HIỆN TRÊN GOOGLE (sửa tại đây) ====== -->
+<title>Hán Ngữ Viki – Trung tâm tiếng Trung | Luyện thi HSK, giao tiếp, thiếu nhi</title>
+<meta name="description" content="Trung tâm tiếng Trung Hán Ngữ Viki – Vững nền tri thức, mở lối tương lai. Khóa học tiếng Trung thiếu nhi, giao tiếp, luyện thi HSK 1–6, lớp nhỏ, giáo viên tận tâm.">
+<meta property="og:title" content="Hán Ngữ Viki – Trung tâm tiếng Trung">
+<meta property="og:description" content="Vững nền tri thức – Mở lối tương lai. Khóa học tiếng Trung cho mọi lứa tuổi.">
+<meta property="og:image" content="logo.png">
+<link rel="icon" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,500;1,600&family=Noto+Serif+SC:wght@600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f2f9f5;          /* nền xanh siêu nhạt */
+    --bg-2:#e6f3ec;
+    --green-900:#0a4537;
+    --green-800:#0c5a47;
+    --green-700:#0e7259;
+    --green-500:#17a07b;
+    --green-200:#bfe5d4;
+    --gold:#c8902a;
+    --gold-2:#e2b04f;
+    --gold-soft:#fbf1dc;
+    --red:#c8442f;          /* điểm nhấn kiểu Hán tự */
+    --ink:#173229;
+    --muted:#55716a;
+    --card:rgba(255,255,255,.82);
+    --line:rgba(14,114,89,.14);
+    --shadow:0 12px 34px -14px rgba(10,69,55,.28);
+    --radius:20px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Be Vietnam Pro",system-ui,sans-serif;
+    color:var(--ink);background:var(--bg);line-height:1.65;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+
+  /* ================= NỀN TRE MỜ ẢO ================= */
+  .scenery{position:fixed;inset:0;z-index:-2;pointer-events:none;overflow:hidden}
+  .scenery svg{position:absolute;inset:0;width:100%;height:100%;opacity:.55;filter:blur(1.8px)}
+  .scenery::after{ /* lớp sương mờ phủ lên */
+    content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(ellipse at 50% 30%, rgba(242,249,245,.72), rgba(242,249,245,.35) 75%);
+  }
+
+  .container{width:min(1180px,100% - 32px);margin-inline:auto}
+  section{padding:96px 0}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:.82rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--gold);
+  }
+  .eyebrow::before{content:"";width:26px;height:2px;background:var(--gold);border-radius:2px}
+  h2.title{
+    font-family:"Playfair Display",serif;font-weight:700;
+    font-size:clamp(1.9rem,3.6vw,2.7rem);line-height:1.2;color:var(--green-900);margin:10px 0 14px;
+  }
+  .lead{color:var(--muted);max-width:640px;font-size:1.04rem}
+  .center{text-align:center}.center .lead{margin-inline:auto}.center .eyebrow{justify-content:center}
+
+  /* ================= NÚT ================= */
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;cursor:pointer;border:0;
+    padding:14px 26px;border-radius:999px;font:600 1rem "Be Vietnam Pro",sans-serif;
+    transition:transform .2s, box-shadow .2s, background .2s;
+  }
+  .btn-gold{background:linear-gradient(135deg,var(--gold-2),var(--gold));color:#fff;box-shadow:0 10px 24px -8px rgba(200,144,42,.65)}
+  .btn-gold:hover{transform:translateY(-2px);box-shadow:0 14px 30px -8px rgba(200,144,42,.75)}
+  .btn-green{background:var(--green-700);color:#fff;box-shadow:0 10px 24px -10px rgba(14,114,89,.7)}
+  .btn-green:hover{background:var(--green-800);transform:translateY(-2px)}
+  .btn-ghost{background:rgba(255,255,255,.7);color:var(--green-800);border:1.5px solid var(--green-200)}
+  .btn-ghost:hover{background:#fff;border-color:var(--green-500)}
+
+  /* ================= HEADER ================= */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(242,249,245,.78);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;height:76px;gap:20px}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand img{height:52px;width:auto}
+  .brand-text b{display:block;font-weight:800;color:var(--green-900);font-size:1.12rem;letter-spacing:.02em}
+  .brand-text span{font-family:"Playfair Display",serif;font-style:italic;color:var(--gold);font-size:.82rem}
+  .menu{display:flex;gap:6px;list-style:none}
+  .menu a{padding:8px 14px;border-radius:999px;font-weight:500;font-size:.95rem;color:var(--green-900);transition:.2s}
+  .menu a:hover{background:var(--green-200);color:var(--green-900)}
+  .nav .btn{padding:11px 20px;font-size:.93rem}
+  .burger{display:none;background:none;border:0;cursor:pointer;width:44px;height:44px;border-radius:12px}
+  .burger span{display:block;width:22px;height:2px;background:var(--green-900);margin:5px auto;border-radius:2px;transition:.3s}
+
+  /* ================= HERO ================= */
+  .hero{padding:72px 0 80px;position:relative}
+  .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+  .hero h1{
+    font-family:"Playfair Display",serif;font-weight:700;
+    font-size:clamp(2.3rem,5vw,3.8rem);line-height:1.12;color:var(--green-900);margin:16px 0 18px;
+  }
+  .hero h1 em{font-style:italic;color:var(--gold);}
+  .hero p.lead{font-size:1.12rem}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
+  .hero-badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+  .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.75);border:1px solid var(--line);padding:8px 14px;border-radius:999px;font-size:.88rem;font-weight:500;color:var(--green-800)}
+  .badge i{font-style:normal;color:var(--green-500);font-weight:800}
+
+  .hero-visual{position:relative}
+  .hero-logo{
+    background:rgba(255,255,255,.75);border-radius:32px;padding:34px;
+    box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.9);
+    position:relative;z-index:1;
+  }
+  .hero-logo img{width:100%;max-width:420px;margin:auto}
+  .hanzi-float{
+    position:absolute;font-family:"Noto Serif SC",serif;color:var(--red);
+    background:#fff;border-radius:16px;box-shadow:var(--shadow);
+    display:grid;place-items:center;z-index:2;animation:float 6s ease-in-out infinite;
+  }
+  .hanzi-float small{display:block;font-family:"Be Vietnam Pro";font-size:.7rem;color:var(--muted);font-weight:500;margin-top:-4px}
+  .hz1{width:86px;height:86px;font-size:2.2rem;top:-22px;left:-26px}
+  .hz2{width:74px;height:74px;font-size:1.8rem;bottom:40px;right:-24px;animation-delay:-2s;color:var(--green-700)}
+  .hz3{width:64px;height:64px;font-size:1.5rem;bottom:-20px;left:30px;animation-delay:-4s;color:var(--gold)}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+  /* ================= SỐ LIỆU ================= */
+  .stats{padding:0 0 30px}
+  .stats-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);
+    background:linear-gradient(135deg,var(--green-800),var(--green-700));
+    border-radius:26px;padding:34px 20px;color:#fff;box-shadow:var(--shadow);position:relative;overflow:hidden;
+  }
+  .stats-grid::after{content:"学";position:absolute;right:-10px;bottom:-60px;font:600 13rem "Noto Serif SC";color:rgba(255,255,255,.06)}
+  .stat{text-align:center;padding:6px 10px;border-right:1px solid rgba(255,255,255,.15)}
+  .stat:last-child{border-right:0}
+  .stat b{display:block;font-family:"Playfair Display",serif;font-size:2.4rem;color:var(--gold-2);line-height:1.1}
+  .stat span{font-size:.92rem;opacity:.9}
+
+  /* ================= VỀ CHÚNG TÔI ================= */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .about-photo{position:relative;border-radius:28px;overflow:hidden;box-shadow:var(--shadow);aspect-ratio:4/3.3}
+  .about-photo .stamp{
+    position:absolute;bottom:18px;left:18px;background:rgba(255,255,255,.92);
+    border-radius:16px;padding:12px 16px;display:flex;gap:12px;align-items:center;box-shadow:var(--shadow)
+  }
+  .stamp .seal{width:46px;height:46px;border-radius:10px;background:var(--red);color:#fff;display:grid;place-items:center;font:600 1.4rem "Noto Serif SC"}
+  .stamp b{display:block;color:var(--green-900);font-size:.98rem}.stamp span{font-size:.82rem;color:var(--muted)}
+  .features{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px}
+  .feature{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;transition:.25s}
+  .feature:hover{transform:translateY(-3px);box-shadow:var(--shadow);background:#fff}
+  .feature .ic{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:var(--gold-soft);color:var(--gold);margin-bottom:10px}
+  .feature h4{color:var(--green-900);font-size:1rem;margin-bottom:4px}
+  .feature p{font-size:.9rem;color:var(--muted);line-height:1.5}
+
+  /* ================= KHÓA HỌC ================= */
+  .tabs{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin:30px 0 36px}
+  .tab{padding:10px 20px;border-radius:999px;border:1.5px solid var(--green-200);background:rgba(255,255,255,.7);cursor:pointer;font:600 .92rem "Be Vietnam Pro";color:var(--green-800);transition:.2s}
+  .tab.active,.tab:hover{background:var(--green-700);border-color:var(--green-700);color:#fff}
+  .courses{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .course{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
+    display:flex;flex-direction:column;transition:.3s;backdrop-filter:blur(6px);
+  }
+  .course:hover{transform:translateY(-6px);box-shadow:var(--shadow);background:#fff}
+  .course.hide{display:none}
+  .course-top{height:120px;position:relative;display:flex;align-items:flex-end;padding:18px;color:#fff;overflow:hidden}
+  .course-top .big{position:absolute;right:12px;top:-14px;font:600 6rem "Noto Serif SC";opacity:.18;line-height:1}
+  .course-top .lvl{position:relative;background:rgba(255,255,255,.22);padding:5px 12px;border-radius:999px;font-size:.78rem;font-weight:600;backdrop-filter:blur(4px)}
+  .c1{background:linear-gradient(135deg,#17a07b,#0e7259)}
+  .c2{background:linear-gradient(135deg,#e2b04f,#c8902a)}
+  .c3{background:linear-gradient(135deg,#0e7259,#0a4537)}
+  .c4{background:linear-gradient(135deg,#d0573f,#a8382a)}
+  .c5{background:linear-gradient(135deg,#3aa58a,#1b7e8a)}
+  .c6{background:linear-gradient(135deg,#8a6a2e,#5c4a1f)}
+  .course-body{padding:20px 22px 22px;display:flex;flex-direction:column;flex:1}
+  .course h3{font-size:1.18rem;color:var(--green-900);margin-bottom:6px}
+  .course p{font-size:.92rem;color:var(--muted);margin-bottom:14px}
+  .meta{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:.85rem;color:var(--green-800);margin-bottom:18px}
+  .meta span{display:inline-flex;align-items:center;gap:6px}
+  .course-foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;border-top:1px dashed var(--line);padding-top:16px}
+  .price{font-weight:800;color:var(--red);font-size:1.05rem}
+  .price small{font-weight:500;color:var(--muted);font-size:.78rem}
+  .link-arrow{font-weight:600;color:var(--green-700);font-size:.9rem;display:inline-flex;gap:6px;align-items:center}
+  .link-arrow:hover{color:var(--gold)}
+
+  /* ================= LỘ TRÌNH ================= */
+  .roadmap{background:linear-gradient(180deg,transparent,rgba(230,243,236,.75),transparent)}
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:44px;position:relative}
+  .steps::before{content:"";position:absolute;top:34px;left:12%;right:12%;height:2px;background:repeating-linear-gradient(90deg,var(--gold) 0 8px,transparent 8px 16px)}
+  .step{text-align:center;position:relative}
+  .step .num{width:68px;height:68px;border-radius:50%;margin:0 auto 16px;display:grid;place-items:center;background:#fff;border:2px solid var(--gold);color:var(--green-800);font:700 1.4rem "Playfair Display";box-shadow:var(--shadow);position:relative}
+  .step h4{color:var(--green-900);margin-bottom:6px}
+  .step p{font-size:.9rem;color:var(--muted)}
+
+  /* ================= HÌNH ẢNH LỚP HỌC ================= */
+  .gallery{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:210px;gap:14px;margin-top:40px}
+  .g-item{border-radius:18px;overflow:hidden;position:relative;cursor:zoom-in;background:var(--bg-2)}
+  .g-item:nth-child(1){grid-column:span 2;grid-row:span 2}
+  .g-item:nth-child(4){grid-row:span 2}
+  .g-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+  .g-item:hover img{transform:scale(1.06)}
+  .g-item figcaption{position:absolute;left:0;right:0;bottom:0;padding:30px 16px 12px;color:#fff;font-size:.9rem;font-weight:500;background:linear-gradient(transparent,rgba(10,69,55,.75));opacity:0;transform:translateY(8px);transition:.3s}
+  .g-item:hover figcaption{opacity:1;transform:none}
+
+  /* Ô chờ ảnh – hiện khi chưa tải ảnh lên */
+  .ph{position:relative}
+  .ph.missing img{display:none}
+  .ph.missing::before{
+    content:attr(data-label);position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:16px;
+    color:var(--green-700);font-weight:600;font-size:.88rem;
+    background:
+      repeating-linear-gradient(45deg,rgba(14,114,89,.05) 0 12px,transparent 12px 24px),
+      linear-gradient(135deg,#e7f4ed,#d6ece1);
+    border:2px dashed var(--green-200);border-radius:inherit;
+  }
+
+  .lightbox{position:fixed;inset:0;background:rgba(6,30,24,.88);display:none;place-items:center;z-index:100;padding:24px}
+  .lightbox.open{display:grid}
+  .lightbox img{max-height:86vh;border-radius:14px}
+  .lightbox button{position:absolute;top:18px;right:22px;background:#fff;border:0;width:44px;height:44px;border-radius:50%;font-size:1.4rem;cursor:pointer}
+
+  /* ================= GIÁO VIÊN ================= */
+  .teachers{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:40px}
+  .teacher{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 16px 20px;text-align:center;transition:.3s}
+  .teacher:hover{transform:translateY(-5px);box-shadow:var(--shadow);background:#fff}
+  .teacher .avatar{aspect-ratio:1;border-radius:16px;overflow:hidden;margin-bottom:14px}
+  .teacher .avatar img{width:100%;height:100%;object-fit:cover}
+  .teacher h4{color:var(--green-900)}
+  .teacher .role{font-size:.85rem;color:var(--gold);font-weight:600}
+  .teacher p{font-size:.85rem;color:var(--muted);margin-top:6px}
+
+  /* ================= CẢM NHẬN ================= */
+  .reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:40px}
+  .review{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px;position:relative}
+  .review::before{content:"“";position:absolute;top:-6px;right:20px;font:700 5rem "Playfair Display";color:var(--green-200);line-height:1}
+  .stars{color:var(--gold-2);letter-spacing:2px;margin-bottom:10px}
+  .review p{color:var(--ink);font-size:.95rem;margin-bottom:18px}
+  .who{display:flex;align-items:center;gap:12px}
+  .who .ava{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--green-700);color:#fff;font-weight:700}
+  .who b{display:block;color:var(--green-900);font-size:.95rem}.who span{font-size:.82rem;color:var(--muted)}
+
+  /* ================= ĐĂNG KÝ & LIÊN HỆ ================= */
+  .contact-wrap{display:grid;grid-template-columns:1fr 1.05fr;gap:0;border-radius:28px;overflow:hidden;box-shadow:var(--shadow);background:#fff}
+  .contact-info{background:linear-gradient(160deg,var(--green-800),var(--green-900));color:#fff;padding:44px;position:relative;overflow:hidden}
+  .contact-info::after{content:"中文";position:absolute;right:-20px;bottom:-40px;font:600 9rem "Noto Serif SC";color:rgba(255,255,255,.05)}
+  .contact-info h2{font-family:"Playfair Display",serif;font-size:2rem;margin:8px 0 12px}
+  .contact-info .eyebrow{color:var(--gold-2)}.contact-info .eyebrow::before{background:var(--gold-2)}
+  .contact-info>p{opacity:.85;margin-bottom:26px}
+  .ci{display:flex;gap:14px;align-items:flex-start;margin-bottom:18px;position:relative;z-index:1}
+  .ci .ic{width:42px;height:42px;flex:none;border-radius:12px;background:rgba(255,255,255,.1);display:grid;place-items:center;color:var(--gold-2)}
+  .ci b{display:block;font-size:.85rem;opacity:.7;font-weight:500}
+  .ci span,.ci a{font-weight:600}
+  .ci a:hover{color:var(--gold-2)}
+  .socials{display:flex;gap:10px;margin-top:26px;position:relative;z-index:1}
+  .socials a{padding:10px 16px;border-radius:999px;background:rgba(255,255,255,.1);font-size:.88rem;font-weight:600;transition:.2s}
+  .socials a:hover{background:var(--gold);}
+  form{padding:44px}
+  form h3{font-size:1.4rem;color:var(--green-900);margin-bottom:6px}
+  form>p{color:var(--muted);font-size:.92rem;margin-bottom:22px}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .field{margin-bottom:14px}
+  .field label{display:block;font-size:.85rem;font-weight:600;color:var(--green-900);margin-bottom:6px}
+  .field input,.field select,.field textarea{
+    width:100%;padding:13px 15px;border-radius:12px;border:1.5px solid #d7e8df;background:var(--bg);
+    font:500 .95rem "Be Vietnam Pro";color:var(--ink);transition:.2s;
+  }
+  .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--green-500);background:#fff;box-shadow:0 0 0 4px rgba(23,160,123,.12)}
+  form .btn{width:100%;justify-content:center;margin-top:6px}
+  .ok{display:none;margin-top:14px;padding:12px 14px;border-radius:12px;background:#e3f6ec;color:var(--green-800);font-size:.9rem;font-weight:500}
+  .map{margin-top:28px;border-radius:24px;overflow:hidden;box-shadow:var(--shadow);height:340px;border:4px solid #fff}
+  .map iframe{width:100%;height:100%;border:0}
+
+  /* ================= FOOTER ================= */
+  footer{background:var(--green-900);color:rgba(255,255,255,.8);padding:56px 0 26px;margin-top:96px}
+  .foot{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:40px}
+  .foot img{height:70px;background:#fff;border-radius:14px;padding:6px;margin-bottom:14px}
+  .foot h5{color:#fff;font-size:1rem;margin-bottom:14px}
+  .foot ul{list-style:none}.foot li{margin-bottom:8px;font-size:.92rem}
+  .foot a:hover{color:var(--gold-2)}
+  .slogan{font-family:"Playfair Display",serif;font-style:italic;color:var(--gold-2);font-size:1.1rem}
+  .copy{border-top:1px solid rgba(255,255,255,.1);margin-top:36px;padding-top:20px;text-align:center;font-size:.85rem;opacity:.7}
+
+  /* ================= NÚT LIÊN HỆ NỔI ================= */
+  .floating{position:fixed;right:18px;bottom:18px;display:flex;flex-direction:column;gap:12px;z-index:60}
+  .floating a{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;color:#fff;box-shadow:0 10px 24px -6px rgba(0,0,0,.35);transition:.2s;font-weight:800;font-size:.8rem}
+  .floating a:hover{transform:scale(1.08)}
+  .f-zalo{background:#0068ff}
+  .f-call{background:var(--red);animation:ring 2s infinite}
+  @keyframes ring{0%{box-shadow:0 0 0 0 rgba(200,68,47,.5)}70%{box-shadow:0 0 0 16px rgba(200,68,47,0)}100%{box-shadow:0 0 0 0 rgba(200,68,47,0)}}
+
+  /* Hiệu ứng xuất hiện khi cuộn */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease, transform .8s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ================= ĐIỆN THOẠI & MÁY TÍNH BẢNG ================= */
+  @media (max-width:980px){
+    .menu{position:fixed;top:76px;left:0;right:0;flex-direction:column;background:rgba(242,249,245,.97);backdrop-filter:blur(14px);padding:14px 16px 22px;border-bottom:1px solid var(--line);transform:translateY(-130%);transition:.35s;box-shadow:var(--shadow)}
+    .menu.open{transform:none}
+    .menu a{display:block;padding:12px 14px}
+    .burger{display:block}
+    .nav .btn{display:none}
+    .hero-grid,.about-grid,.contact-wrap{grid-template-columns:1fr}
+    .hero-visual{max-width:440px;margin:10px auto 0}
+    .courses,.reviews{grid-template-columns:1fr 1fr}
+    .teachers{grid-template-columns:1fr 1fr}
+    .steps{grid-template-columns:1fr 1fr;row-gap:36px}.steps::before{display:none}
+    .stats-grid{grid-template-columns:1fr 1fr;row-gap:24px}
+    .stat:nth-child(2){border-right:0}
+    .gallery{grid-template-columns:1fr 1fr;grid-auto-rows:170px}
+    .g-item:nth-child(4){grid-row:span 1}
+    .foot{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:620px){
+    section{padding:70px 0}
+    .courses,.reviews,.features,.row{grid-template-columns:1fr}
+    .brand-text span{display:none}
+    .brand img{height:44px}
+    .contact-info,form{padding:30px 22px}
+    .foot{grid-template-columns:1fr}
+    .hz1{left:-6px}.hz2{right:-6px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== NỀN: rặng tre, cổng làng, em bé ngồi học – vẽ mờ ảo ===== -->
+<div class="scenery" aria-hidden="true">
+  <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#d9f0e4"/><stop offset="1" stop-color="#bfe3cf"/>
+      </linearGradient>
+      <g id="leaf"><path d="M0 0 C 18 -6, 40 -4, 58 0 C 40 4, 18 6, 0 0 Z"/></g>
+      <g id="stalk">
+        <rect x="-7" y="0" width="14" height="900" rx="7"/>
+        <g fill="#0a4537" opacity=".35">
+          <rect x="-8" y="120" width="16" height="4" rx="2"/><rect x="-8" y="260" width="16" height="4" rx="2"/>
+          <rect x="-8" y="400" width="16" height="4" rx="2"/><rect x="-8" y="540" width="16" height="4" rx="2"/>
+          <rect x="-8" y="680" width="16" height="4" rx="2"/>
+        </g>
+      </g>
+    </defs>
+
+    <rect width="1440" height="900" fill="url(#sky)"/>
+    <!-- mặt trời mờ -->
+    <circle cx="1040" cy="250" r="110" fill="#f6e3b0" opacity=".7"/>
+    <!-- đồi xa -->
+    <path d="M0 640 Q 240 560 480 620 T 960 600 T 1440 590 V900 H0Z" fill="#a8d8bf"/>
+    <!-- cánh đồng -->
+    <path d="M0 720 Q 360 670 720 705 T 1440 690 V900 H0Z" fill="#8ccaa9"/>
+    <g stroke="#6fb592" stroke-width="2" opacity=".6">
+      <path d="M0 780 Q 400 740 900 770 T 1440 760" fill="none"/>
+      <path d="M0 830 Q 500 800 1000 825 T 1440 815" fill="none"/>
+    </g>
+
+    <!-- cổng làng phía xa -->
+    <g transform="translate(860 520)" fill="#5f9e83" opacity=".85">
+      <rect x="0" y="40" width="26" height="150"/><rect x="134" y="40" width="26" height="150"/>
+      <path d="M-20 44 L80 6 L180 44 L170 54 L80 22 L-10 54Z"/>
+      <path d="M26 70 H134 V86 Q80 60 26 86Z"/>
+      <rect x="64" y="96" width="32" height="20" rx="3" fill="#e2b04f" opacity=".7"/>
+    </g>
+
+    <!-- rặng tre bên trái -->
+    <g fill="#2f8f6d">
+      <use href="#stalk" transform="translate(150 60) rotate(-4)"/>
+      <use href="#stalk" transform="translate(205 20) rotate(2)"/>
+      <use href="#stalk" transform="translate(255 80) rotate(7)"/>
+      <use href="#stalk" transform="translate(95 120) rotate(-9)"/>
+      <use href="#stalk" transform="translate(300 160) rotate(12)"/>
+    </g>
+    <g fill="#1f7a5c">
+      <use href="#leaf" transform="translate(205 80) rotate(20)"/><use href="#leaf" transform="translate(205 80) rotate(150)"/>
+      <use href="#leaf" transform="translate(150 150) rotate(-160)"/><use href="#leaf" transform="translate(150 150) rotate(-20)"/>
+      <use href="#leaf" transform="translate(255 160) rotate(35)"/><use href="#leaf" transform="translate(255 160) rotate(70)"/>
+      <use href="#leaf" transform="translate(300 240) rotate(10)"/><use href="#leaf" transform="translate(300 240) rotate(50)"/>
+      <use href="#leaf" transform="translate(110 220) rotate(-140)"/><use href="#leaf" transform="translate(110 220) rotate(-175)"/>
+      <use href="#leaf" transform="translate(230 300) rotate(25)"/><use href="#leaf" transform="translate(180 330) rotate(-150)"/>
+      <use href="#leaf" transform="translate(320 380) rotate(30)"/><use href="#leaf" transform="translate(260 420) rotate(60)"/>
+      <use href="#leaf" transform="translate(140 400) rotate(-165)"/><use href="#leaf" transform="translate(340 300) rotate(-5)"/>
+      <use href="#leaf" transform="translate(200 40) rotate(-60)"/><use href="#leaf" transform="translate(260 60) rotate(-20)"/>
+    </g>
+
+    <!-- rặng tre bên phải -->
+    <g fill="#2f8f6d">
+      <use href="#stalk" transform="translate(1290 40) rotate(3)"/>
+      <use href="#stalk" transform="translate(1345 90) rotate(-5)"/>
+      <use href="#stalk" transform="translate(1235 140) rotate(-10)"/>
+      <use href="#stalk" transform="translate(1395 30) rotate(6)"/>
+    </g>
+    <g fill="#1f7a5c">
+      <use href="#leaf" transform="translate(1290 100) rotate(200)"/><use href="#leaf" transform="translate(1290 100) rotate(-30)"/>
+      <use href="#leaf" transform="translate(1235 210) rotate(210)"/><use href="#leaf" transform="translate(1235 210) rotate(170)"/>
+      <use href="#leaf" transform="translate(1345 180) rotate(-20)"/><use href="#leaf" transform="translate(1345 180) rotate(15)"/>
+      <use href="#leaf" transform="translate(1395 260) rotate(190)"/><use href="#leaf" transform="translate(1260 330) rotate(220)"/>
+      <use href="#leaf" transform="translate(1320 380) rotate(-10)"/><use href="#leaf" transform="translate(1380 120) rotate(160)"/>
+    </g>
+
+    <!-- em bé đội nón lá ngồi đọc sách dưới gốc tre -->
+    <g transform="translate(345 690)" fill="#1d6b52">
+      <path d="M-34 -64 L0 -92 L34 -64 Q0 -58 -34 -64Z" fill="#c8902a"/>
+      <circle cx="0" cy="-52" r="15"/>
+      <path d="M-18 -36 Q0 -42 18 -36 L22 4 L-22 4Z"/>
+      <path d="M-22 2 Q-30 18 -6 22 L40 22 Q48 20 46 12 L14 6Z"/>
+      <path d="M10 -26 L44 -34 L46 -6 L12 0Z" fill="#f4f1e6"/>
+      <path d="M10 -26 L28 -30 L30 -3 L12 0Z" fill="#ffffff"/>
+    </g>
+    <!-- chú trâu nhỏ xa xa -->
+    <g transform="translate(640 700)" fill="#4f8c73" opacity=".8">
+      <ellipse cx="0" cy="0" rx="34" ry="16"/><circle cx="34" cy="-6" r="10"/>
+      <rect x="-24" y="8" width="6" height="18"/><rect x="18" y="8" width="6" height="18"/>
+      <path d="M30 -16 Q40 -26 52 -18" stroke="#4f8c73" stroke-width="4" fill="none"/>
+    </g>
+
+    <!-- chữ Hán bay trong gió -->
+    <g font-family="Noto Serif SC, serif" fill="#c8442f" opacity=".7">
+      <text x="430" y="560" font-size="34" transform="rotate(-10 430 560)">你</text>
+      <text x="500" y="500" font-size="28" transform="rotate(8 500 500)">好</text>
+      <text x="570" y="450" font-size="24" fill="#0e7259">学</text>
+      <text x="640" y="410" font-size="20" fill="#c8902a">中</text>
+      <text x="700" y="380" font-size="18">文</text>
+    </g>
+    <!-- chim bay -->
+    <g stroke="#3f7d66" stroke-width="2.5" fill="none" stroke-linecap="round">
+      <path d="M760 200 q10 -10 20 0 q10 -10 20 0"/>
+      <path d="M820 170 q8 -8 16 0 q8 -8 16 0"/>
+    </g>
+  </svg>
+</div>
+
+<!-- ================= HEADER ================= -->
+<header>
+  <div class="container nav">
+    <a href="#trang-chu" class="brand">
+      <img src="logo.png" alt="Logo Hán Ngữ Viki">
+      <div class="brand-text"><b>HÁN NGỮ VIKI</b><span>Vững nền tri thức – Mở lối tương lai</span></div>
+    </a>
+    <ul class="menu" id="menu">
+      <li><a href="#gioi-thieu">Giới thiệu</a></li>
+      <li><a href="#khoa-hoc">Khóa học</a></li>
+      <li><a href="#lo-trinh">Lộ trình</a></li>
+      <li><a href="#lop-hoc">Lớp học</a></li>
+      <li><a href="#giao-vien">Giáo viên</a></li>
+      <li><a href="#lien-he">Liên hệ</a></li>
+    </ul>
+    <a href="#lien-he" class="btn btn-gold">Đăng ký học thử</a>
+    <button class="burger" id="burger" aria-label="Mở menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="trang-chu">
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="reveal">
+      <span class="eyebrow">Trung tâm tiếng Trung</span>
+      <h1>Học tiếng Trung<br>vững nền tảng,<br><em>mở lối tương lai</em></h1>
+      <p class="lead">Hán Ngữ Viki đồng hành cùng học viên từ những nét chữ đầu tiên đến chứng chỉ HSK — với lộ trình rõ ràng, lớp học nhỏ và giáo viên tận tâm.</p>
+      <div class="hero-cta">
+        <a href="#lien-he" class="btn btn-gold">Đăng ký học thử miễn phí →</a>
+        <a href="#khoa-hoc" class="btn btn-ghost">Xem khóa học</a>
+      </div>
+      <div class="hero-badges">
+        <span class="badge"><i>✓</i> Lớp nhỏ 6–12 học viên</span>
+        <span class="badge"><i>✓</i> Cam kết đầu ra HSK</span>
+        <span class="badge"><i>✓</i> Kiểm tra trình độ miễn phí</span>
+      </div>
+    </div>
+    <div class="hero-visual reveal">
+      <div class="hanzi-float hz1"><div>你好<small>Xin chào</small></div></div>
+      <div class="hero-logo"><img src="logo.png" alt="Hán Ngữ Viki – Vững nền tri thức, Mở lối tương lai"></div>
+      <div class="hanzi-float hz2"><div>学<small>Học</small></div></div>
+      <div class="hanzi-float hz3"><div>梦<small>Ước mơ</small></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SỐ LIỆU (sửa con số cho đúng thực tế) ================= -->
+<div class="stats">
+  <div class="container">
+    <div class="stats-grid reveal">
+      <div class="stat"><b>500+</b><span>Học viên đã theo học</span></div>
+      <div class="stat"><b>95%</b><span>Học viên đỗ HSK</span></div>
+      <div class="stat"><b>10+</b><span>Giáo viên & trợ giảng</span></div>
+      <div class="stat"><b>5★</b><span>Đánh giá từ phụ huynh</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= GIỚI THIỆU ================= -->
+<section id="gioi-thieu">
+  <div class="container about-grid">
+    <div class="about-photo ph reveal" data-label="Ảnh trung tâm / lớp học&#10;(tải lên file: images/gioi-thieu.jpg)">
+      <img src="images/gioi-thieu.jpg" alt="Không gian lớp học tại Hán Ngữ Viki" style="width:100%;height:100%;object-fit:cover">
+      <div class="stamp"><div class="seal">维</div><div><b>Hán Ngữ Viki</b><span>Học thật – Hiểu thật – Dùng được</span></div></div>
+    </div>
+    <div class="reveal">
+      <span class="eyebrow">Về chúng tôi</span>
+      <h2 class="title">Nơi tiếng Trung bắt đầu từ gốc rễ</h2>
+      <p class="lead">Như cây tre làng vươn cao nhờ bộ rễ vững chắc, chúng tôi tin rằng một nền tảng phát âm, chữ Hán và ngữ pháp chắc chắn sẽ giúp học viên đi xa — dù là để giao tiếp, du học, làm việc hay chinh phục HSK.</p>
+      <div class="features">
+        <div class="feature"><div class="ic">📚</div><h4>Giáo trình chuẩn</h4><p>Bám sát chuẩn HSK mới, kết hợp tài liệu riêng của trung tâm.</p></div>
+        <div class="feature"><div class="ic">👩‍🏫</div><h4>Giáo viên tận tâm</h4><p>Theo sát từng học viên, sửa phát âm và bài tập mỗi buổi.</p></div>
+        <div class="feature"><div class="ic">🎯</div><h4>Lộ trình cá nhân</h4><p>Kiểm tra đầu vào, xếp lớp đúng trình độ, báo cáo tiến độ.</p></div>
+        <div class="feature"><div class="ic">🏮</div><h4>Học mà vui</h4><p>Trò chơi, bài hát, văn hóa Trung Hoa trong từng buổi học.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= KHÓA HỌC (sửa tên, mô tả, học phí) ================= -->
+<section id="khoa-hoc">
+  <div class="container">
+    <div class="center reveal">
+      <span class="eyebrow">Chương trình đào tạo</span>
+      <h2 class="title">Khóa học dành cho mọi lứa tuổi</h2>
+      <p class="lead">Chọn khóa học phù hợp với mục tiêu của bạn hoặc của con. Chưa biết chọn? Hãy để chúng tôi kiểm tra trình độ miễn phí.</p>
+    </div>
+    <div class="tabs reveal">
+      <button class="tab active" data-f="all">Tất cả</button>
+      <button class="tab" data-f="kid">Thiếu nhi</button>
+      <button class="tab" data-f="talk">Giao tiếp</button>
+      <button class="tab" data-f="hsk">Luyện thi HSK</button>
+    </div>
+    <div class="courses">
+      <article class="course reveal" data-c="kid">
+        <div class="course-top c1"><span class="big">童</span><span class="lvl">6 – 11 tuổi</span></div>
+        <div class="course-body">
+          <h3>Tiếng Trung Thiếu Nhi</h3>
+          <p>Làm quen pinyin, chữ Hán qua tranh ảnh, bài hát và trò chơi. Bé yêu tiếng Trung một cách tự nhiên.</p>
+          <div class="meta"><span>🗓 3 tháng</span><span>⏰ 2 buổi/tuần</span><span>👥 8–10 bé</span></div>
+          <div class="course-foot"><span class="price">Liên hệ <small>/ khóa</small></span><a href="#lien-he" class="link-arrow">Đăng ký →</a></div>
+        </div>
+      </article>
+      <article class="course reveal" data-c="kid">
+        <div class="course-top c5"><span class="big">少</span><span class="lvl">12 – 16 tuổi</span></div>
+        <div class="course-body">
+          <h3>Tiếng Trung Thiếu Niên (YCT)</h3>
+          <p>Xây nền tảng vững chắc cho học sinh, chuẩn bị thi YCT và chuyển tiếp lên HSK.</p>
+          <div class="meta"><span>🗓 4 tháng</span><span>⏰ 2–3 buổi/tuần</span><span>👥 8–12 HV</span></div>
+          <div class="course-foot"><span class="price">Liên hệ <small>/ khóa</small></span><a href="#lien-he" class="link-arrow">Đăng ký →</a></div>
+        </div>
+      </article>
+      <article class="course reveal" data-c="talk">
+        <div class="course-top c2"><span class="big">说</span><span class="lvl">Người mới bắt đầu</span></div>
+        <div class="course-body">
+          <h3>Giao Tiếp Cơ Bản</h3>
+          <p>Phát âm chuẩn, phản xạ nói các tình huống hằng ngày: chào hỏi, mua sắm, du lịch, hỏi đường.</p>
+          <div class="meta"><span>🗓 3 tháng</span><span>⏰ 3 buổi/tuần</span><span>👥 6–10 HV</span></div>
+          <div class="course-foot"><span class="price">Liên hệ <small>/ khóa</small></span><a href="#lien-he" class="link-arrow">Đăng ký →</a></div>
+        </div>
+      </article>
+      <article class="course reveal" data-c="talk">
+        <div class="course-top c6"><span class="big">商</span><span class="lvl">Người đi làm</span></div>
+        <div class="course-body">
+          <h3>Tiếng Trung Công Sở</h3>
+          <p>Giao tiếp văn phòng, đàm phán, email, làm việc với đối tác Trung Quốc, Đài Loan.</p>
+          <div class="meta"><span>🗓 3 tháng</span><span>⏰ Tối/cuối tuần</span><span>👥 6–8 HV</span></div>
+          <div class="course-foot"><span class="price">Liên hệ <small>/ khóa</small></span><a href="#lien-he" class="link-arrow">Đăng ký →</a></div>
+        </div>
+      </article>
+      <article class="course reveal" data-c="hsk">
+        <div class="course-top c3"><span class="big">初</span><span class="lvl">HSK 1 – 3</span></div>
+        <div class="course-body">
+          <h3>Luyện Thi HSK Sơ – Trung Cấp</h3>
+          <p>Nắm chắc từ vựng, ngữ pháp, kỹ năng nghe – đọc – viết theo cấu trúc đề thi HSK.</p>
+          <div class="meta"><span>🗓 4–6 tháng</span><span>⏰ 3 buổi/tuần</span><span>📝 Thi thử định kỳ</span></div>
+          <div class="course-foot"><span class="price">Liên hệ <small>/ khóa</small></span><a href="#lien-he" class="link-arrow">Đăng ký →</a></div>
+        </div>
+      </article>
+      <article class="course reveal" data-c="hsk">
+        <div class="course-top c4"><span class="big">高</span><span class="lvl">HSK 4 – 6 & HSKK</span></div>
+        <div class="course-body">
+          <h3>Luyện Thi HSK Cao Cấp</h3>
+          <p>Chinh phục HSK 4–6 và HSKK, chuẩn bị hồ sơ du học, học bổng và cơ hội việc làm.</p>
+          <div class="meta"><span>🗓 6 tháng</span><span>⏰ 3 buổi/tuần</span><span>🎓 Cam kết đầu ra</span></div>
+          <div class="course-foot"><span class="price">Liên hệ <small>/ khóa</small></span><a href="#lien-he" class="link-arrow">Đăng ký →</a></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= LỘ TRÌNH ================= -->
+<section id="lo-trinh" class="roadmap">
+  <div class="container">
+    <div class="center reveal">
+      <span class="eyebrow">Học như thế nào</span>
+      <h2 class="title">4 bước bắt đầu cùng Viki</h2>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><div class="num">1</div><h4>Đăng ký tư vấn</h4><p>Để lại thông tin, trung tâm liên hệ trong 24 giờ.</p></div>
+      <div class="step reveal"><div class="num">2</div><h4>Kiểm tra trình độ</h4><p>Đánh giá miễn phí để xếp lớp phù hợp.</p></div>
+      <div class="step reveal"><div class="num">3</div><h4>Học thử 1 buổi</h4><p>Trải nghiệm lớp học trước khi quyết định.</p></div>
+      <div class="step reveal"><div class="num">4</div><h4>Vào lớp & tiến bộ</h4><p>Theo dõi tiến độ, thi thử và báo cáo định kỳ.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= HÌNH ẢNH LỚP HỌC (tải ảnh vào thư mục images/) ================= -->
+<section id="lop-hoc">
+  <div class="container">
+    <div class="center reveal">
+      <span class="eyebrow">Khoảnh khắc</span>
+      <h2 class="title">Hình ảnh lớp học</h2>
+      <p class="lead">Những giờ học sôi nổi, những nụ cười và từng bước tiến bộ của học viên Hán Ngữ Viki.</p>
+    </div>
+    <div class="gallery reveal">
+      <figure class="g-item ph" data-label="images/lop-hoc-1.jpg"><img src="images/lop-hoc-1.jpg" alt="Lớp học tiếng Trung"><figcaption>Giờ học giao tiếp</figcaption></figure>
+      <figure class="g-item ph" data-label="images/lop-hoc-2.jpg"><img src="images/lop-hoc-2.jpg" alt="Lớp thiếu nhi"><figcaption>Lớp thiếu nhi</figcaption></figure>
+      <figure class="g-item ph" data-label="images/lop-hoc-3.jpg"><img src="images/lop-hoc-3.jpg" alt="Luyện viết chữ Hán"><figcaption>Luyện viết chữ Hán</figcaption></figure>
+      <figure class="g-item ph" data-label="images/lop-hoc-4.jpg"><img src="images/lop-hoc-4.jpg" alt="Hoạt động văn hóa"><figcaption>Hoạt động văn hóa</figcaption></figure>
+      <figure class="g-item ph" data-label="images/lop-hoc-5.jpg"><img src="images/lop-hoc-5.jpg" alt="Học viên đỗ HSK"><figcaption>Vinh danh học viên đỗ HSK</figcaption></figure>
+      <figure class="g-item ph" data-label="images/lop-hoc-6.jpg"><img src="images/lop-hoc-6.jpg" alt="Lớp luyện thi"><figcaption>Lớp luyện thi HSK</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ================= GIÁO VIÊN (sửa tên, giới thiệu, ảnh) ================= -->
+<section id="giao-vien">
+  <div class="container">
+    <div class="center reveal">
+      <span class="eyebrow">Đội ngũ</span>
+      <h2 class="title">Giáo viên tận tâm</h2>
+      <p class="lead">Giàu kinh nghiệm, phát âm chuẩn và luôn đặt sự tiến bộ của học viên lên hàng đầu.</p>
+    </div>
+    <div class="teachers">
+      <div class="teacher reveal"><div class="avatar ph" data-label="images/gv-1.jpg"><img src="images/gv-1.jpg" alt="Giáo viên"></div><h4>Cô Nguyễn Thị A</h4><div class="role">Giám đốc chuyên môn</div><p>Thạc sĩ Hán ngữ, HSK 6, 8 năm kinh nghiệm.</p></div>
+      <div class="teacher reveal"><div class="avatar ph" data-label="images/gv-2.jpg"><img src="images/gv-2.jpg" alt="Giáo viên"></div><h4>Thầy Trần Văn B</h4><div class="role">Giáo viên HSK</div><p>Cử nhân Ngôn ngữ Trung, HSK 6.</p></div>
+      <div class="teacher reveal"><div class="avatar ph" data-label="images/gv-3.jpg"><img src="images/gv-3.jpg" alt="Giáo viên"></div><h4>Cô Lê Thị C</h4><div class="role">Giáo viên thiếu nhi</div><p>Chuyên phương pháp dạy trẻ qua trò chơi.</p></div>
+      <div class="teacher reveal"><div class="avatar ph" data-label="images/gv-4.jpg"><img src="images/gv-4.jpg" alt="Giáo viên"></div><h4>Cô Phạm Thị D</h4><div class="role">Giáo viên giao tiếp</div><p>Từng du học tại Thượng Hải, HSK 5.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CẢM NHẬN (thay bằng cảm nhận thật của học viên) ================= -->
+<section>
+  <div class="container">
+    <div class="center reveal">
+      <span class="eyebrow">Cảm nhận</span>
+      <h2 class="title">Học viên nói gì về Viki</h2>
+    </div>
+    <div class="reviews">
+      <div class="review reveal"><div class="stars">★★★★★</div><p>Con mình học ở đây 3 tháng đã tự tin chào hỏi, đọc được nhiều chữ Hán. Cô giáo rất kiên nhẫn và yêu trẻ.</p><div class="who"><div class="ava">H</div><div><b>Chị Hương</b><span>Phụ huynh lớp thiếu nhi</span></div></div></div>
+      <div class="review reveal"><div class="stars">★★★★★</div><p>Lộ trình rõ ràng, thi thử thường xuyên nên mình đi thi HSK 4 rất tự tin. Lớp nhỏ nên được thầy sửa bài kỹ.</p><div class="who"><div class="ava">M</div><div><b>Minh Anh</b><span>Sinh viên – HSK 4</span></div></div></div>
+      <div class="review reveal"><div class="stars">★★★★★</div><p>Khóa công sở rất thực tế, giờ mình đã có thể trao đổi trực tiếp với đối tác mà không cần phiên dịch.</p><div class="who"><div class="ava">T</div><div><b>Anh Tuấn</b><span>Nhân viên xuất nhập khẩu</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ĐĂNG KÝ & LIÊN HỆ (sửa thông tin liên hệ) ================= -->
+<section id="lien-he">
+  <div class="container">
+    <div class="contact-wrap reveal">
+      <div class="contact-info">
+        <span class="eyebrow">Liên hệ</span>
+        <h2>Bắt đầu hành trình<br>tiếng Trung hôm nay</h2>
+        <p>Để lại thông tin, Hán Ngữ Viki sẽ tư vấn lộ trình và xếp lịch học thử miễn phí cho bạn.</p>
+        <div class="ci"><div class="ic">📍</div><div><b>Địa chỉ</b><span>[Số nhà, đường, phường, quận, TP.HCM]</span></div></div>
+        <div class="ci"><div class="ic">📞</div><div><b>Hotline / Zalo</b><a href="tel:0900000000">0900 000 000</a></div></div>
+        <div class="ci"><div class="ic">✉️</div><div><b>Email</b><a href="mailto:hannguviki@gmail.com">hannguviki@gmail.com</a></div></div>
+        <div class="ci"><div class="ic">🕘</div><div><b>Giờ làm việc</b><span>Thứ 2 – Chủ nhật: 8:00 – 21:00</span></div></div>
+        <div class="socials">
+          <a href="https://facebook.com/" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://zalo.me/0900000000" target="_blank" rel="noopener">Zalo</a>
+          <a href="https://tiktok.com/" target="_blank" rel="noopener">TikTok</a>
+        </div>
+      </div>
+      <form id="form">
+        <h3>Đăng ký học thử miễn phí</h3>
+        <p>Chỉ mất 30 giây — chúng tôi sẽ gọi lại trong vòng 24 giờ.</p>
+        <div class="row">
+          <div class="field"><label for="name">Họ và tên *</label><input id="name" required placeholder="Nguyễn Văn A"></div>
+          <div class="field"><label for="phone">Số điện thoại *</label><input id="phone" type="tel" required placeholder="09xx xxx xxx"></div>
+        </div>
+        <div class="row">
+          <div class="field"><label for="course">Khóa học quan tâm</label>
+            <select id="course">
+              <option>Tiếng Trung Thiếu Nhi</option><option>Tiếng Trung Thiếu Niên (YCT)</option>
+              <option>Giao Tiếp Cơ Bản</option><option>Tiếng Trung Công Sở</option>
+              <option>Luyện Thi HSK 1–3</option><option>Luyện Thi HSK 4–6</option><option>Chưa biết, cần tư vấn</option>
+            </select>
+          </div>
+          <div class="field"><label for="time">Thời gian học mong muốn</label>
+            <select id="time"><option>Buổi sáng</option><option>Buổi chiều</option><option>Buổi tối</option><option>Cuối tuần</option></select>
+          </div>
+        </div>
+        <div class="field"><label for="note">Ghi chú</label><textarea id="note" rows="3" placeholder="Ví dụ: đăng ký cho con 8 tuổi, chưa biết tiếng Trung…"></textarea></div>
+        <button class="btn btn-gold" type="submit">Gửi đăng ký →</button>
+        <div class="ok" id="ok">Cảm ơn bạn! Ứng dụng email đã được mở với nội dung đăng ký — bạn chỉ cần bấm Gửi. Hoặc gọi ngay hotline để được tư vấn nhanh nhất.</div>
+      </form>
+    </div>
+    <!-- Bản đồ: thay chữ sau "q=" bằng địa chỉ thật của trung tâm -->
+    <div class="map reveal">
+      <iframe src="https://www.google.com/maps?q=Th%C3%A0nh+ph%E1%BB%91+H%E1%BB%93+Ch%C3%AD+Minh&output=embed" loading="lazy" title="Bản đồ Hán Ngữ Viki"></iframe>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="container">
+    <div class="foot">
+      <div>
+        <img src="logo.png" alt="Hán Ngữ Viki">
+        <p class="slogan">Vững nền tri thức – Mở lối tương lai</p>
+        <p style="margin-top:10px;font-size:.92rem">Trung tâm tiếng Trung Hán Ngữ Viki – khóa học thiếu nhi, giao tiếp và luyện thi HSK.</p>
+      </div>
+      <div>
+        <h5>Khóa học</h5>
+        <ul><li><a href="#khoa-hoc">Tiếng Trung thiếu nhi</a></li><li><a href="#khoa-hoc">Giao tiếp cơ bản</a></li><li><a href="#khoa-hoc">Tiếng Trung công sở</a></li><li><a href="#khoa-hoc">Luyện thi HSK</a></li></ul>
+      </div>
+      <div>
+        <h5>Liên hệ</h5>
+        <ul><li>📞 0900 000 000</li><li>✉️ hannguviki@gmail.com</li><li>📍 TP. Hồ Chí Minh</li></ul>
+      </div>
+    </div>
+    <div class="copy">© <span id="y"></span> Hán Ngữ Viki. All rights reserved.</div>
+  </div>
+</footer>
+
+<!-- Nút gọi & Zalo nổi -->
+<div class="floating">
+  <a class="f-zalo" href="https://zalo.me/0900000000" target="_blank" rel="noopener" aria-label="Chat Zalo">Zalo</a>
+  <a class="f-call" href="tel:0900000000" aria-label="Gọi điện">📞</a>
+</div>
+
+<div class="lightbox" id="lb"><button aria-label="Đóng">×</button><img alt=""></div>
+
+<script>
+  // ====== Email nhận đăng ký (sửa tại đây) ======
+  const EMAIL = "hannguviki@gmail.com";
+
+  // Ảnh chưa có -> hiện ô chờ ảnh
+  document.querySelectorAll('.ph img').forEach(img=>{
+    const mark=()=>img.closest('.ph').classList.add('missing');
+    if(img.complete && img.naturalWidth===0) mark();
+    img.addEventListener('error',mark);
+  });
+
+  // Menu điện thoại
+  const menu=document.getElementById('menu');
+  document.getElementById('burger').onclick=()=>menu.classList.toggle('open');
+  menu.querySelectorAll('a').forEach(a=>a.onclick=()=>menu.classList.remove('open'));
+
+  // Lọc khóa học
+  document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
+    document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+    t.classList.add('active');
+    const f=t.dataset.f;
+    document.querySelectorAll('.course').forEach(c=>c.classList.toggle('hide',f!=='all'&&c.dataset.c!==f));
+  });
+
+  // Xem ảnh phóng to
+  const lb=document.getElementById('lb'),lbImg=lb.querySelector('img');
+  document.querySelectorAll('.g-item').forEach(g=>g.onclick=()=>{
+    if(g.classList.contains('missing'))return;
+    lbImg.src=g.querySelector('img').src;lb.classList.add('open');
+  });
+  lb.onclick=e=>{if(e.target!==lbImg)lb.classList.remove('open')};
+
+  // Hiệu ứng khi cuộn
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // Form đăng ký -> mở email soạn sẵn
+  document.getElementById('form').onsubmit=e=>{
+    e.preventDefault();
+    const v=id=>document.getElementById(id).value;
+    const body=`Họ tên: ${v('name')}\nSĐT: ${v('phone')}\nKhóa học: ${v('course')}\nThời gian: ${v('time')}\nGhi chú: ${v('note')}`;
+    location.href=`mailto:${EMAIL}?subject=${encodeURIComponent('Đăng ký học thử – '+v('name'))}&body=${encodeURIComponent(body)}`;
+    document.getElementById('ok').style.display='block';
+  };
+
+  document.getElementById('y').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
